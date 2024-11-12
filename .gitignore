@@ -1,0 +1,7 @@
+# Visual Studio files
+EStoreBlazorWASM/.vs/
+EStoreAPI/.vs/
+*.gz
+*.dll
+**/bin
+**/obj

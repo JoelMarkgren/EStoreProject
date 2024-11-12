@@ -1,0 +1,43 @@
+﻿@page "/cellphonelist"
+@inject ICellphoneService cellphoneRepo
+
+
+
+@if (cellphones == null)
+{
+    <p>Loading...</p>
+}
+else if (!cellphones.Any())
+{
+    <p>No available cellphones.</p>
+}
+else
+{
+    <div>
+        <h3 style="text-align:center;">Available Cellphones</h3>
+        <br />
+        <ul>
+            @foreach (var cellphone in cellphones)
+            {
+
+                <div class="card">
+                    <img src="@cellphone.Image" class="imgCard" alt="@cellphone.Model" />
+                    <h1>@cellphone.Model</h1>
+                    <p class="price">@cellphone.Price SEK</p>
+                    <p><button>Details</button></p>
+                </div>
+            }
+        </ul>
+    </div>
+
+    
+}
+
+@code {
+    private IEnumerable<CellphoneViewModel> cellphones;
+
+    protected override async Task OnInitializedAsync()
+    {
+        cellphones = await cellphoneRepo.GetAllAsync();
+    }
+}

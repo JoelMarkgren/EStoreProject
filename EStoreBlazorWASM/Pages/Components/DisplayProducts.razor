@@ -1,0 +1,21 @@
+﻿@if (Products != null)
+{
+    @foreach (var item in Products)
+    {
+        <a href="/ProductDetails/@item.Id">
+            <div class="card">
+                <img src="@item.ImageURL" class="imgCard" alt="@item.Name" />
+                <h1>@item.Name</h1>
+                <p class="price">@item.Price SEK</p>
+                <p>@item.Description</p>
+                <p><button>Add to Cart</button></p>
+            </div>
+        </a>
+    }
+}
+
+
+@code {
+    [Parameter]
+    public IEnumerable<ProductDto> Products { get; set; }
+}
